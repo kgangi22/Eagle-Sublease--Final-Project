@@ -3,19 +3,43 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C160B0324461F6A00D7CDE0 /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C160B0224461F6A00D7CDE0 /* ListingDetailViewController.swift */; };
+		3C160B0724465B7900D7CDE0 /* IndexClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C160B0624465B7900D7CDE0 /* IndexClass.swift */; };
+		3C160B09244674A500D7CDE0 /* TableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C160B08244674A500D7CDE0 /* TableListViewController.swift */; };
+		3C160B0B244679C100D7CDE0 /* Double + RoundTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C160B0A244679C100D7CDE0 /* Double + RoundTo.swift */; };
+		3C160B0D24467C3F00D7CDE0 /* TableListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C160B0C24467C3F00D7CDE0 /* TableListDetailViewController.swift */; };
+		3C2FB38E2444F00D00066E17 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FB38D2444F00D00066E17 /* UIViewController+alert.swift */; };
+		3C2FB39424450B6500066E17 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FB39324450B6500066E17 /* DetailViewController.swift */; };
+		3C2FB39624450BF000066E17 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FB39524450BF000066E17 /* Listing.swift */; };
+		3C2FB398244510A800066E17 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FB397244510A800066E17 /* APIKey.swift */; };
+		3C2FB39C244542B800066E17 /* Listings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FB39B244542B800066E17 /* Listings.swift */; };
 		3CAB75A02444E41E00B5E368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB759F2444E41E00B5E368 /* AppDelegate.swift */; };
 		3CAB75A22444E41E00B5E368 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB75A12444E41E00B5E368 /* SceneDelegate.swift */; };
 		3CAB75A42444E41E00B5E368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB75A32444E41E00B5E368 /* ViewController.swift */; };
 		3CAB75A72444E41E00B5E368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB75A52444E41E00B5E368 /* Main.storyboard */; };
 		3CAB75A92444E42600B5E368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB75A82444E42600B5E368 /* Assets.xcassets */; };
 		3CAB75AC2444E42600B5E368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB75AA2444E42600B5E368 /* LaunchScreen.storyboard */; };
+		3CAB75B42444E48E00B5E368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB75B32444E48E00B5E368 /* GoogleService-Info.plist */; };
+		E891DF7DDD8AF4451022CCE9 /* Pods_Eagle_Sublease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C3A8EA19582EF0658EA80E /* Pods_Eagle_Sublease.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		071965E96B0D1F5893B2B144 /* Pods-Eagle Sublease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eagle Sublease.debug.xcconfig"; path = "Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease.debug.xcconfig"; sourceTree = "<group>"; };
+		07C3A8EA19582EF0658EA80E /* Pods_Eagle_Sublease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eagle_Sublease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C160B0224461F6A00D7CDE0 /* ListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
+		3C160B0624465B7900D7CDE0 /* IndexClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexClass.swift; sourceTree = "<group>"; };
+		3C160B08244674A500D7CDE0 /* TableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListViewController.swift; sourceTree = "<group>"; };
+		3C160B0A244679C100D7CDE0 /* Double + RoundTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + RoundTo.swift"; sourceTree = "<group>"; };
+		3C160B0C24467C3F00D7CDE0 /* TableListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListDetailViewController.swift; sourceTree = "<group>"; };
+		3C2FB38D2444F00D00066E17 /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
+		3C2FB39324450B6500066E17 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3C2FB39524450BF000066E17 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		3C2FB397244510A800066E17 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		3C2FB39B244542B800066E17 /* Listings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listings.swift; sourceTree = "<group>"; };
 		3CAB759C2444E41E00B5E368 /* Eagle Sublease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eagle Sublease.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAB759F2444E41E00B5E368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CAB75A12444E41E00B5E368 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +48,8 @@
 		3CAB75A82444E42600B5E368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CAB75AB2444E42600B5E368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CAB75AD2444E42600B5E368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CAB75B32444E48E00B5E368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		98753910B4DE1DDF39A217A3 /* Pods-Eagle Sublease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eagle Sublease.release.xcconfig"; path = "Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E891DF7DDD8AF4451022CCE9 /* Pods_Eagle_Sublease.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +69,8 @@
 			children = (
 				3CAB759E2444E41E00B5E368 /* Eagle Sublease */,
 				3CAB759D2444E41E00B5E368 /* Products */,
+				5868368730B87544842A05D9 /* Pods */,
+				AFEF71CEAA180B1481EFDB97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +87,41 @@
 			children = (
 				3CAB759F2444E41E00B5E368 /* AppDelegate.swift */,
 				3CAB75A12444E41E00B5E368 /* SceneDelegate.swift */,
+				3C2FB39B244542B800066E17 /* Listings.swift */,
+				3C2FB39524450BF000066E17 /* Listing.swift */,
+				3C160B0624465B7900D7CDE0 /* IndexClass.swift */,
 				3CAB75A32444E41E00B5E368 /* ViewController.swift */,
+				3C2FB39324450B6500066E17 /* DetailViewController.swift */,
+				3C160B0224461F6A00D7CDE0 /* ListingDetailViewController.swift */,
+				3C160B08244674A500D7CDE0 /* TableListViewController.swift */,
+				3C160B0C24467C3F00D7CDE0 /* TableListDetailViewController.swift */,
+				3C2FB38D2444F00D00066E17 /* UIViewController+alert.swift */,
+				3C160B0A244679C100D7CDE0 /* Double + RoundTo.swift */,
 				3CAB75A52444E41E00B5E368 /* Main.storyboard */,
 				3CAB75A82444E42600B5E368 /* Assets.xcassets */,
 				3CAB75AA2444E42600B5E368 /* LaunchScreen.storyboard */,
 				3CAB75AD2444E42600B5E368 /* Info.plist */,
+				3CAB75B32444E48E00B5E368 /* GoogleService-Info.plist */,
+				3C2FB397244510A800066E17 /* APIKey.swift */,
 			);
 			path = "Eagle Sublease";
+			sourceTree = "<group>";
+		};
+		5868368730B87544842A05D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				071965E96B0D1F5893B2B144 /* Pods-Eagle Sublease.debug.xcconfig */,
+				98753910B4DE1DDF39A217A3 /* Pods-Eagle Sublease.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AFEF71CEAA180B1481EFDB97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07C3A8EA19582EF0658EA80E /* Pods_Eagle_Sublease.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +131,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CAB75B02444E42600B5E368 /* Build configuration list for PBXNativeTarget "Eagle Sublease" */;
 			buildPhases = (
+				237C70C1740CA3EBECA881AA /* [CP] Check Pods Manifest.lock */,
 				3CAB75982444E41E00B5E368 /* Sources */,
 				3CAB75992444E41E00B5E368 /* Frameworks */,
 				3CAB759A2444E41E00B5E368 /* Resources */,
+				08AA4C443A54B2437BC29F78 /* [CP] Embed Pods Frameworks */,
+				3F2F28D27C524DD73D72F428 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CAB75AC2444E42600B5E368 /* LaunchScreen.storyboard in Resources */,
+				3CAB75B42444E48E00B5E368 /* GoogleService-Info.plist in Resources */,
 				3CAB75A92444E42600B5E368 /* Assets.xcassets in Resources */,
 				3CAB75A72444E41E00B5E368 /* Main.storyboard in Resources */,
 			);
@@ -133,14 +194,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08AA4C443A54B2437BC29F78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		237C70C1740CA3EBECA881AA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Eagle Sublease-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F2F28D27C524DD73D72F428 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3CAB75982444E41E00B5E368 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3CAB75A42444E41E00B5E368 /* ViewController.swift in Sources */,
+				3C2FB398244510A800066E17 /* APIKey.swift in Sources */,
+				3C160B0B244679C100D7CDE0 /* Double + RoundTo.swift in Sources */,
+				3C160B09244674A500D7CDE0 /* TableListViewController.swift in Sources */,
 				3CAB75A02444E41E00B5E368 /* AppDelegate.swift in Sources */,
+				3C160B0D24467C3F00D7CDE0 /* TableListDetailViewController.swift in Sources */,
+				3C2FB39424450B6500066E17 /* DetailViewController.swift in Sources */,
 				3CAB75A22444E41E00B5E368 /* SceneDelegate.swift in Sources */,
+				3C2FB39624450BF000066E17 /* Listing.swift in Sources */,
+				3C160B0324461F6A00D7CDE0 /* ListingDetailViewController.swift in Sources */,
+				3C2FB39C244542B800066E17 /* Listings.swift in Sources */,
+				3C2FB38E2444F00D00066E17 /* UIViewController+alert.swift in Sources */,
+				3C160B0724465B7900D7CDE0 /* IndexClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +412,7 @@
 		};
 		3CAB75B12444E42600B5E368 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 071965E96B0D1F5893B2B144 /* Pods-Eagle Sublease.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +431,7 @@
 		};
 		3CAB75B22444E42600B5E368 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98753910B4DE1DDF39A217A3 /* Pods-Eagle Sublease.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
