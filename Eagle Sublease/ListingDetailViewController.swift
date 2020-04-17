@@ -17,12 +17,14 @@ class ListingDetailViewController: UIViewController {
     @IBOutlet weak var unitNumberView: UITextView!
     @IBOutlet weak var descriptionForListingView: UITextView!
     @IBOutlet weak var priceView: UITextView!
+    @IBOutlet weak var postingDateLabel: UILabel!
     
     var event = Int()
     var address = String()
     var unit = String()
     var descriptionForListing = String()
     var price = Double()
+    var postingDate = Date()
     var utilitiesBoxBool = Bool()
     var washerDryerBoxBool = Bool()
     var dishwasherBoxBool = Bool()
@@ -46,6 +48,8 @@ class ListingDetailViewController: UIViewController {
     @IBOutlet weak var deckBoxImage: UIImageView!
     @IBOutlet weak var handicapBoxImage: UIImageView!
     
+     let dateFormatter = DateFormatter()
+    
     
     var listings: Listings!
     
@@ -56,6 +60,15 @@ class ListingDetailViewController: UIViewController {
     }
     
     func updateUserInterface(){
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let usableDate = postingDate
+        
+        var dateString = dateFormatter.string(from: usableDate)
+        dateString = dateFormatter.string(from: usableDate)
+        postingDateLabel.text = "Date Posted: \(dateString)"
+        
+        
         addressView.text = address
         unitNumberView.text = unit
         descriptionForListingView.text = descriptionForListing

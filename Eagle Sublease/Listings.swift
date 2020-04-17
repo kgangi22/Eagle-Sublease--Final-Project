@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-import FirebaseFirestore
+
 
 class Listings{
     var listingArray: [Listing] = []

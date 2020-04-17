@@ -329,6 +329,7 @@ extension ViewController: MKMapViewDelegate{
         indexClass.descriptionForListing = post.descriptionForListing
         indexClass.unit = post.unitNumber
         indexClass.price = post.price
+        indexClass.postingDate = post.postingDate
         indexClass.utilitiesBoxBool = post.utilitiesBoxBool
         indexClass.washerDryerBoxBool = post.washerDryerBoxBool
         indexClass.dishwasherBoxBool = post.dishwasherBoxBool
@@ -350,6 +351,7 @@ extension ViewController: MKMapViewDelegate{
             destination.unit = indexClass.unit
             destination.descriptionForListing = indexClass.descriptionForListing
             destination.price = indexClass.price
+            destination.postingDate = indexClass.postingDate
             destination.utilitiesBoxBool = indexClass.utilitiesBoxBool
             destination.washerDryerBoxBool = indexClass.washerDryerBoxBool
             destination.dishwasherBoxBool = indexClass.dishwasherBoxBool

@@ -14,6 +14,7 @@ class IndexClass{
     var descriptionForListing = ""
     var price = 0.00
     var index = 0
+    var postingDate = Date()
     var utilitiesBoxBool = false
     var washerDryerBoxBool = false
     var dishwasherBoxBool = false

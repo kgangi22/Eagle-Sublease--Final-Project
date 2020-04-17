@@ -29,6 +29,13 @@ class TableListDetailViewController: UIViewController {
     @IBOutlet weak var deckBoxImage: UIImageView!
     @IBOutlet weak var handicapBoxImage: UIImageView!
     
+    @IBOutlet weak var postingDateLabel: UILabel!
+    
+    let dateFormatter = DateFormatter()
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,10 +50,19 @@ class TableListDetailViewController: UIViewController {
     }
     
     func updateUserInterface(){
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let usableDate = listing.postingDate
+        
+        var dateString = dateFormatter.string(from: usableDate)
+        dateString = dateFormatter.string(from: usableDate)
+        postingDateLabel.text = "Date Posted: \(dateString)"
+    
         
         addressTextView.text = listing.address
         unitNumberView.text = listing.unitNumber
         descriptionForListingView.text = listing.descriptionForListing
+        
         if listing.price.remainder(dividingBy: 1) == 0{
             priceTextView.text = "\(listing.price)0"
         }

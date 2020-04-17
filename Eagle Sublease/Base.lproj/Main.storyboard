@@ -94,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monthly Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEj-ml-WiC">
-                                <rect key="frame" x="11" y="107" width="127" height="32"/>
+                                <rect key="frame" x="3" y="107" width="127" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="23"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -201,7 +201,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uH-wF-hBP">
-                                <rect key="frame" x="8" y="599" width="66" height="32"/>
+                                <rect key="frame" x="5" y="608" width="66" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="23"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -249,7 +249,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dollarsign.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Oxe-Di-WwX">
-                                <rect key="frame" x="137" y="104" width="30" height="36"/>
+                                <rect key="frame" x="129" y="104" width="30" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -261,16 +261,8 @@
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Unit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dZZ-Qf-im1">
-                                <rect key="frame" x="60" y="64" width="91" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Price" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JJn-tl-s7B">
-                                <rect key="frame" x="165" y="103" width="91" height="33"/>
+                                <rect key="frame" x="156" y="105" width="91" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -278,13 +270,28 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBs-hO-MVW">
-                                <rect key="frame" x="179" y="695" width="121" height="30"/>
+                                <rect key="frame" x="137" y="695" width="121" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Delete Listing">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Posted: 8/17/1999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p50-CI-oDD">
+                                <rect key="frame" x="204" y="0.0" width="207" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Italic" family="Avenir Next Condensed" pointSize="18"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Unit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dZZ-Qf-im1">
+                                <rect key="frame" x="55" y="66" width="91" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="xpX-mW-iFi"/>
@@ -300,6 +307,7 @@
                         <outlet property="handicapBoxImage" destination="Mkg-dR-iyY" id="KtP-9c-Ohc"/>
                         <outlet property="parkingSpaceBoxImage" destination="OWs-KV-5fs" id="2V8-5T-jTi"/>
                         <outlet property="petsBoxImage" destination="V3R-Ge-4aq" id="xTF-WD-9BJ"/>
+                        <outlet property="postingDateLabel" destination="p50-CI-oDD" id="qg9-EC-j3l"/>
                         <outlet property="priceView" destination="JJn-tl-s7B" id="ePU-Xi-Hji"/>
                         <outlet property="singleRoomBoxImage" destination="XI1-DX-mrc" id="Se4-ox-e78"/>
                         <outlet property="unitNumberView" destination="dZZ-Qf-im1" id="7Te-QU-vai"/>
@@ -309,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcg-PC-Xyf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3825" y="747"/>
+            <point key="canvasLocation" x="3358" y="816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="alK-9u-0bA">
@@ -893,6 +901,13 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Posted: 8/17/1999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-uD-lfV">
+                                <rect key="frame" x="203" y="0.0" width="207" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Italic" family="Avenir Next Condensed" pointSize="18"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="idP-v9-cek"/>
@@ -908,6 +923,7 @@
                         <outlet property="handicapBoxImage" destination="C5t-Ic-kOr" id="fqi-8R-hHw"/>
                         <outlet property="parkingSpaceBoxImage" destination="yDh-z2-vh1" id="A1D-Q0-K2n"/>
                         <outlet property="petsBoxImage" destination="R6s-XT-SWP" id="u94-Gw-XyK"/>
+                        <outlet property="postingDateLabel" destination="2YQ-uD-lfV" id="Vu6-Zo-a8D"/>
                         <outlet property="priceTextView" destination="4DG-JE-AgR" id="cEz-0G-qO0"/>
                         <outlet property="singleRoomBoxImage" destination="6II-Jm-Wj7" id="GxH-Kc-4FH"/>
                         <outlet property="unitNumberView" destination="bQK-L9-Hmi" id="ji7-pC-Cs5"/>
@@ -917,7 +933,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaB-Lo-e3w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="1923"/>
+            <point key="canvasLocation" x="647.82608695652175" y="1922.5446428571427"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Yfg-5Q-aWI">
