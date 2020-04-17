@@ -24,6 +24,7 @@
 		3CAB75A92444E42600B5E368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB75A82444E42600B5E368 /* Assets.xcassets */; };
 		3CAB75AC2444E42600B5E368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB75AA2444E42600B5E368 /* LaunchScreen.storyboard */; };
 		3CAB75B42444E48E00B5E368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB75B32444E48E00B5E368 /* GoogleService-Info.plist */; };
+		3CBE85CC2448BFFF00A9721D /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE85CB2448BFFF00A9721D /* FiltersViewController.swift */; };
 		E891DF7DDD8AF4451022CCE9 /* Pods_Eagle_Sublease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C3A8EA19582EF0658EA80E /* Pods_Eagle_Sublease.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		3CAB75AB2444E42600B5E368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CAB75AD2444E42600B5E368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CAB75B32444E48E00B5E368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3CBE85CB2448BFFF00A9721D /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		98753910B4DE1DDF39A217A3 /* Pods-Eagle Sublease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eagle Sublease.release.xcconfig"; path = "Target Support Files/Pods-Eagle Sublease/Pods-Eagle Sublease.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				3C160B0224461F6A00D7CDE0 /* ListingDetailViewController.swift */,
 				3C160B08244674A500D7CDE0 /* TableListViewController.swift */,
 				3C160B0C24467C3F00D7CDE0 /* TableListDetailViewController.swift */,
+				3CBE85CB2448BFFF00A9721D /* FiltersViewController.swift */,
 				3C2FB38D2444F00D00066E17 /* UIViewController+alert.swift */,
 				3C160B0A244679C100D7CDE0 /* Double + RoundTo.swift */,
 				3CAB75A52444E41E00B5E368 /* Main.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				3CAB75A42444E41E00B5E368 /* ViewController.swift in Sources */,
 				3C2FB398244510A800066E17 /* APIKey.swift in Sources */,
+				3CBE85CC2448BFFF00A9721D /* FiltersViewController.swift in Sources */,
 				3C160B0B244679C100D7CDE0 /* Double + RoundTo.swift in Sources */,
 				3C160B09244674A500D7CDE0 /* TableListViewController.swift in Sources */,
 				3CAB75A02444E41E00B5E368 /* AppDelegate.swift in Sources */,

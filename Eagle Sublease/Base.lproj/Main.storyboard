@@ -309,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcg-PC-Xyf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2243.4782608695655" y="652.90178571428567"/>
+            <point key="canvasLocation" x="3825" y="747"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="alK-9u-0bA">
@@ -365,12 +365,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="0gE-U6-fM6">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="uiV-4D-7RS" detailTextLabel="gI8-iI-nEW" style="IBUITableViewCellStyleSubtitle" id="0gE-U6-fM6">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0gE-U6-fM6" id="SxP-Bm-9kF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" id="uiV-4D-7RS">
+                                                    <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="gI8-iI-nEW">
+                                                    <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="EF8-8W-WId" kind="show" identifier="ShowTableDetail" id="HRT-W7-hHb"/>
@@ -395,9 +411,14 @@
                         <barButtonItem key="backBarButtonItem" title="Back to List" id="1zh-pf-LEp"/>
                         <barButtonItem key="rightBarButtonItem" title="Filter" image="line.horizontal.3.decrease.circle" catalog="system" id="BBL-0q-5qF">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="DLb-JV-APj" id="kpM-Or-xd1"/>
+                                <segue destination="IoS-bF-4JO" kind="show" identifier="ShowFilters" id="g5M-A7-32l"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="BBL-0q-5qF" id="rIc-Bv-5dN"/>
                         <outlet property="segmenetedControl" destination="zLk-tB-F91" id="5WF-Et-xk1"/>
                         <outlet property="tableView" destination="Oyj-t7-8MC" id="U0n-Sm-fR8"/>
                     </connections>
@@ -405,6 +426,265 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6i-ra-mTi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="379.71014492753625" y="960.9375"/>
+        </scene>
+        <!--Filters View Controller-->
+        <scene sceneID="hdT-T8-iwy">
+            <objects>
+                <viewController id="IoS-bF-4JO" customClass="FiltersViewController" customModule="Eagle_Sublease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BPE-oc-8He">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ammenities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-YA-v8m">
+                                <rect key="frame" x="151" y="157" width="106" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="23"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Utilities Included" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebN-C7-tXO">
+                                <rect key="frame" x="8" y="215" width="105" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Washer/Dryer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8s-bB-AEW">
+                                <rect key="frame" x="9" y="264" width="105" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dish Washer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZz-lP-A7O">
+                                <rect key="frame" x="8" y="314" width="105" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Single Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlC-jc-gew">
+                                <rect key="frame" x="8" y="362" width="105" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Double Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxs-gO-iyX">
+                                <rect key="frame" x="8" y="412" width="105" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parking Space" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKd-Fl-Rus">
+                                <rect key="frame" x="276" y="215" width="88" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Air Conditioning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJq-fc-WeF">
+                                <rect key="frame" x="262" y="264" width="104" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoJ-Hc-1O9">
+                                <rect key="frame" x="326" y="314" width="31" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deck/Balcony" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqg-wa-YZu">
+                                <rect key="frame" x="276" y="362" width="81" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Handicap Accessible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtJ-n6-iyn">
+                                <rect key="frame" x="239" y="412" width="128" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bLL-9J-yQF">
+                                <rect key="frame" x="121" y="217" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="IBc-HB-x7B" appends="YES" id="JEi-rD-WwG"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IZq-ZX-YHQ">
+                                <rect key="frame" x="121" y="267" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Rnc-Rh-Zst" appends="YES" id="pg0-Gy-L5y"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bOP-Ov-lJC">
+                                <rect key="frame" x="121" y="316" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="DH7-Aj-Nc6" appends="YES" id="Y2R-JQ-bK9"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KOl-I9-Okv">
+                                <rect key="frame" x="121" y="365" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="smi-MI-U0f" appends="YES" id="UWK-QW-Ff9"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qdz-mz-Myi">
+                                <rect key="frame" x="121" y="414" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qb8-JY-8Zd" appends="YES" id="2XT-17-TIi"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mKk-dO-2z8">
+                                <rect key="frame" x="365" y="219" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iel-VS-efu" appends="YES" id="HUk-Pj-a3o"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4jA-yg-9dL">
+                                <rect key="frame" x="365" y="269" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="GOC-Wi-mes" appends="YES" id="9qi-sn-HGI"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="T0N-Ic-bNi">
+                                <rect key="frame" x="365" y="318" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7QS-RX-a1k" appends="YES" id="2ow-9c-m9n"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ohx-Xq-xZ3">
+                                <rect key="frame" x="365" y="367" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MUV-35-X7x" appends="YES" id="vEz-Ni-Pop"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yjN-ZE-Z47">
+                                <rect key="frame" x="365" y="416" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="BVB-pz-vrj" appends="YES" id="hId-hw-Qrt"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydv-VT-HyD">
+                                <rect key="frame" x="156" y="472" width="103" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear All Filters"/>
+                                <connections>
+                                    <action selector="clearFIltersButtonPressed:" destination="IoS-bF-4JO" eventType="touchUpInside" id="jlC-Sm-cKl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuP-5T-pmf">
+                                <rect key="frame" x="7" y="100" width="109" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="23"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="HD8-No-Clc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ygD-sA-kJ5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="vIH-zn-K6l">
+                            <connections>
+                                <segue destination="5mX-Sr-L18" kind="unwind" unwindAction="unwindFromFiltersViewControllerWithSegue:" id="Gpf-pZ-Y0x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="airConditioningFilterBoxImage" destination="4jA-yg-9dL" id="7du-uv-LLo"/>
+                        <outlet property="deckFilterImageBox" destination="Ohx-Xq-xZ3" id="6LO-Id-N9U"/>
+                        <outlet property="dishwasherFilterBoxImage" destination="bOP-Ov-lJC" id="e89-xG-n7o"/>
+                        <outlet property="doubleRoomFilterBoxImage" destination="qdz-mz-Myi" id="khj-3S-vNf"/>
+                        <outlet property="handicapFilterImageBox" destination="yjN-ZE-Z47" id="FfH-3t-imu"/>
+                        <outlet property="parkingSpotFilterBoxImage" destination="mKk-dO-2z8" id="Aid-M6-JLP"/>
+                        <outlet property="petsFilterImageBox" destination="T0N-Ic-bNi" id="CSb-Xs-4aG"/>
+                        <outlet property="singleRoomFilterBoxImage" destination="KOl-I9-Okv" id="FBA-aP-RiB"/>
+                        <outlet property="utilitiesFilterBoxImage" destination="bLL-9J-yQF" id="X1a-ab-TuS"/>
+                        <outlet property="washerDryerFilterBoxImage" destination="IZq-ZX-YHQ" id="gd2-OI-dec"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7F-Wh-d29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5mX-Sr-L18" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="IBc-HB-x7B">
+                    <connections>
+                        <action selector="utilitiesBoxTapped:" destination="IoS-bF-4JO" id="gcf-oY-GCf"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Rnc-Rh-Zst">
+                    <connections>
+                        <action selector="washerDryerBoxTapped:" destination="IoS-bF-4JO" id="fFg-qu-hoC"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="DH7-Aj-Nc6">
+                    <connections>
+                        <action selector="dishwasherBoxTapped:" destination="IoS-bF-4JO" id="pvj-Iu-HcU"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="smi-MI-U0f">
+                    <connections>
+                        <action selector="singleRoomBoxTapped:" destination="IoS-bF-4JO" id="dPq-KL-2An"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="qb8-JY-8Zd">
+                    <connections>
+                        <action selector="doubleRoomBoxTapped:" destination="IoS-bF-4JO" id="TYz-Bt-6vs"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="iel-VS-efu">
+                    <connections>
+                        <action selector="parkingSpaceBoxTapped:" destination="IoS-bF-4JO" id="iKO-T5-ekJ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="GOC-Wi-mes">
+                    <connections>
+                        <action selector="airconditioningBoxTapped:" destination="IoS-bF-4JO" id="XSa-Kx-ROh"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="7QS-RX-a1k">
+                    <connections>
+                        <action selector="petsBoxTapped:" destination="IoS-bF-4JO" id="78F-7X-mLy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="MUV-35-X7x">
+                    <connections>
+                        <action selector="deckBoxTapped:" destination="IoS-bF-4JO" id="DMh-ij-yUl"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="BVB-pz-vrj">
+                    <connections>
+                        <action selector="handicapBoxTapped:" destination="IoS-bF-4JO" id="bXS-iS-Dh0"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1922" y="1074"/>
         </scene>
         <!--Table List Detail View Controller-->
         <scene sceneID="mzE-eC-Azc">
@@ -637,7 +917,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaB-Lo-e3w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1471.0144927536232" y="994.41964285714278"/>
+            <point key="canvasLocation" x="649" y="1923"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Yfg-5Q-aWI">

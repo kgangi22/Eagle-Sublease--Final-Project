@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     var authUI: FUIAuth!
     var listings: Listings!
-    let regionDistance: CLLocationDistance = 500
+    let regionDistance: CLLocationDistance = 350
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation!
     

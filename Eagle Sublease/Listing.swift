@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 import Firebase
 import MapKit
+import FirebaseFirestore
 
 
 class Listing: NSObject, MKAnnotation{
