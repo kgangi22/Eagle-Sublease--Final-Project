@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1172,6 +1173,45 @@
                                     <outletCollection property="gestureRecognizers" destination="xUT-6l-R7w" appends="YES" id="BSA-u6-J3P"/>
                                 </connections>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tjR-E5-els">
+                                <rect key="frame" x="5" y="727" width="400" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0oV-Uu-Haw">
+                                    <size key="itemSize" width="131" height="113"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="ikm-EX-KBC" customClass="PhotosCollectionViewCell" customModule="Eagle_Sublease" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="7.5" width="131" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Uk-dP-Ru2">
+                                            <rect key="frame" x="0.0" y="0.0" width="131" height="113"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiP-tz-bz1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="131" height="105"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="131" height="113"/>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="uiP-tz-bz1" id="Kcj-nE-r7L"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQu-Ww-AKf">
+                                <rect key="frame" x="160" y="688" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Photos"/>
+                                <connections>
+                                    <action selector="addPhotosButtonPressed:" destination="RxK-SS-0ky" eventType="touchUpInside" id="eTW-Mm-fTy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="v3g-9J-5U1"/>
@@ -1196,6 +1236,7 @@
                         <outlet property="dishwasherBoxImage" destination="Gkn-fU-OmX" id="OXo-BT-bde"/>
                         <outlet property="doubleRoomBoxImage" destination="073-lg-wLb" id="y3y-Id-fRh"/>
                         <outlet property="handicapImageBox" destination="kks-Ve-lxO" id="Ydl-w6-V2e"/>
+                        <outlet property="imageCollectionView" destination="tjR-E5-els" id="GIg-yn-TuQ"/>
                         <outlet property="parkingSpotBoxImage" destination="TRs-kl-vrf" id="bXg-13-3uB"/>
                         <outlet property="petsImageBox" destination="o3K-qK-4fp" id="NqL-Qz-Nrb"/>
                         <outlet property="priceView" destination="v7h-EC-kQZ" id="u2v-tC-pQ6"/>

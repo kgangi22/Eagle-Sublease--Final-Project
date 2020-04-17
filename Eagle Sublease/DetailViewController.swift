@@ -28,9 +28,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var deckImageBox: UIImageView!
     @IBOutlet weak var handicapImageBox: UIImageView!
     
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     
     var listing: Listing!
     var listings: Listings!
+    var photos: Photos!
+    var imagePicker = UIImagePickerController()
     
     
     var utilitiesBoxBool = false
@@ -48,6 +51,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         saveBarButton.isEnabled = false
+        imageCollectionView.delegate = self
+        imageCollectionView.dataSource = self
+        imagePicker.delegate = self
         hideKeyboardWhenTappedAround()
         descriptionView.layer.borderWidth = 1
         descriptionView.layer.borderColor = UIColor.black.cgColor
@@ -55,6 +61,7 @@ class DetailViewController: UIViewController {
         if listing == nil {
             listing = Listing()
         }
+        photos = Photos()
         updateUserInterface()
         
 
@@ -84,6 +91,34 @@ class DetailViewController: UIViewController {
         listing.deckBoxBool = deckBoxBool
         listing.handicapBoxBool = handicapBoxBool
     }
+    
+    func showAlert(title: String, message: String){
+           let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+           alertController.addAction(alertAction)
+           present(alertController, animated: true, completion: nil)
+       }
+    
+    
+    func cameraOrLibraryAlert(){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) {_ in
+            self.accessCamera()
+        }
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default){_ in
+            self.accessLibrary()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoLibraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func addPhotosButtonPressed(_ sender: UIButton) {
+        cameraOrLibraryAlert()
+    }
+    
     
     
     @IBAction func utilitiesBoxTapped(_ sender: UITapGestureRecognizer) {
@@ -302,4 +337,59 @@ extension DetailViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+}
+
+extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photoArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotosCollectionViewCell
+        cell.photo = photos.photoArray[indexPath.row]
+        return cell
+        
+    }
+}
+
+extension DetailViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+        let photo = Photo()
+        photo.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        photos.photoArray.append(photo)
+        dismiss(animated: true) {
+            self.imageCollectionView.reloadData()
+        }
+        
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func accessLibrary(){
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    func accessCamera(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
+        } else{
+            showAlert(title: "Camera Not Available", message: "There is no camera available on this device.")
+        }
+        
+    }
+    
+    
+    
+    
 }
