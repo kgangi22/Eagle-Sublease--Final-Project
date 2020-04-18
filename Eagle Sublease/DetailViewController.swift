@@ -50,6 +50,9 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         saveBarButton.isEnabled = false
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
@@ -278,6 +281,14 @@ class DetailViewController: UIViewController {
     }
     
     
+    
+    
+
+    
+    
+
+    
+    
 
  
 }
@@ -350,11 +361,29 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
         
     }
+    
+    //Use the following two functions to execute segue to separate view controller to view photos at larger size in vertical collection view
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowPhotos", sender: Any?.self)
+        return print("Tapped")
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowPhotos"{
+            print("segue fired")
+            let destination = segue.destination as! TestViewController
+            destination.student = "Yes"
+        }
+    }
 }
+    
+
 
 extension DetailViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         
         let photo = Photo()
         photo.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
@@ -376,7 +405,6 @@ extension DetailViewController: UINavigationControllerDelegate, UIImagePickerCon
         present(imagePicker, animated: true, completion: nil)
         
         
-        
     }
     
     func accessCamera(){
@@ -388,8 +416,9 @@ extension DetailViewController: UINavigationControllerDelegate, UIImagePickerCon
         }
         
     }
-    
-    
-    
-    
 }
+    
+    
+    
+    
+

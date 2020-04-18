@@ -25,6 +25,10 @@ class ViewController: UIViewController {
     var height: Double = 3
     
     var indexClass = IndexClass()
+    var mapIndex = 0
+    
+    var pointAnnotation: CustomAnnotations!
+    var pinAnnotationView: MKPinAnnotationView!
     
     
     
@@ -38,8 +42,6 @@ class ViewController: UIViewController {
         listings = Listings()
         
         mapSetUpForViewDidLoad()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,10 +49,7 @@ class ViewController: UIViewController {
         listings.loadData {
             self.mapView.reloadInputViews()
             self.updateMap()
-            
-            
         }
-        
     }
     
     func mapSetUpForViewDidLoad(){
@@ -98,10 +97,26 @@ class ViewController: UIViewController {
         
         for index in 0..<listings.listingArray.count{
             let annotation = Listing(address: listings.listingArray[index].address, coordinate: listings.listingArray[index].coordinate, unitNumber: listings.listingArray[index].unitNumber, descriptionForListing: listings.listingArray[index].descriptionForListing, postingDate: listings.listingArray[index].postingDate, index: listings.listingArray[index].index, price: listings.listingArray[index].price, utilitiesBoxBool: listings.listingArray[index].utilitiesBoxBool, washerDryerBoxBool: listings.listingArray[index].washerDryerBoxBool, dishwasherBoxBool: listings.listingArray[index].dishwasherBoxBool, singleRoomBoxBool: listings.listingArray[index].singleRoomBoxBool, doubleRoomBoxBool: listings.listingArray[index].doubleRoomBoxBool, parkingSpotBoxBool: listings.listingArray[index].parkingSpotBoxBool, airConditioningBoxBool: listings.listingArray[index].airConditioningBoxBool, petsBoxBool: listings.listingArray[index].petsBoxBool, deckBoxBool: listings.listingArray[index].deckBoxBool, handicapBoxBool: listings.listingArray[index].handicapBoxBool, postingUserID: listings.listingArray[index].postingUserID, documentID: listings.listingArray[index].documentID)
-            mapView.addAnnotation(annotation)
-            mapView.setCenter(listings.listingArray[index].coordinate, animated: true)
+            
+            
+            
+            var information = MKPointAnnotation()
+            
+            information.coordinate = annotation.coordinate
+            
+            
+            mapView.addAnnotation(information)
+            
         }
         
+        if listings.listingArray.count > 0{
+           mapView.setCenter(listings.listingArray[mapIndex].coordinate, animated: true)
+        }
+        
+        
+        
+//        mapView.setCenter(listings.listingArray[index].coordinate, animated: true)
+     
     }
     
     func centerViewOnUserLocation(){
@@ -239,26 +254,33 @@ extension ViewController: FUIAuthDelegate {
         }
     }
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
-        // Create an instance of the FirebaseAuth login view controller
+         //Create an instance of the FirebaseAuth login view controller
         let loginViewController = FUIAuthPickerViewController(authUI: authUI)
-        
-        // Set background color to white
-        loginViewController.view.backgroundColor = UIColor(red: 126/255, green: 30/255, blue: 21/255, alpha: 1.0)
-        loginViewController.view.tintColor = UIColor(red: 126/255, green: 30/255, blue: 21/255, alpha: 1.0)
-        print("***Attempted to Change Background Color***")
-        
-        // Create a frame for a UIImageView to hold our logo
         let marginInsets: CGFloat = 16 // logo will be 16 points from L and R margins
         let imageHeight: CGFloat = 225 // the height of our logo
         let imageY = self.view.center.y - imageHeight // places bottom of UIImageView in the center of the login screen
         let logoFrame = CGRect(x: self.view.frame.origin.x + marginInsets, y: imageY, width: self.view.frame.width - (marginInsets*2), height: imageHeight)
-        
-        // Create the UIImageView using the frame created above & add the "logo" image
         let logoImageView = UIImageView(frame: logoFrame)
         logoImageView.image = UIImage(named: "logo")
         logoImageView.contentMode = .scaleAspectFit // Set imageView to Aspect Fit
         loginViewController.view.addSubview(logoImageView) // Add ImageView to the login controller's main view
+
+        let selectorView = view.subviews[0].subviews[0]
+        selectorView.backgroundColor = UIColor.clear
+
+        // Set background color to white
+        loginViewController.view.backgroundColor = UIColor(red: 126/255, green: 30/255, blue: 21/255, alpha: 1.0)
+        loginViewController.view.tintColor = UIColor(red: 126/255, green: 30/255, blue: 21/255, alpha: 1.0)
+        print("***Attempted to Change Background Color***")
+
+        // Create a frame for a UIImageView to hold our logo
+
+
+        // Create the UIImageView using the frame created above & add the "logo" image
+
+
         return loginViewController
+        
     }
 }
 
@@ -318,12 +340,26 @@ extension ViewController: CLLocationManagerDelegate{
 extension ViewController: MKMapViewDelegate{
     
     
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let postAnnotation = view.annotation as? Listing else {
-            return
+        var post = Listing()
+        print("The annotation was selected")
+        print("The coordinate is \(view.annotation!.coordinate)")
+        
+        for listing in listings.listingArray{
+            if view.annotation!.coordinate.latitude ==  listing.coordinate.latitude && view.annotation!.coordinate.longitude ==  listing.coordinate.longitude {
+                post = listing
+                break
+            }
         }
-        let post = listings.listingArray[postAnnotation.index]
+        
+//
+//        guard let postAnnotation = view.annotation as? Listing else {
+//            return
+//        }
+//        let post = listings.listingArray[postAnnotation.index]
         print("The index number is \(post.index)")
+        self.mapIndex = post.index
         indexClass.index = post.index
         indexClass.address = post.address
         indexClass.descriptionForListing = post.descriptionForListing
@@ -366,8 +402,44 @@ extension ViewController: MKMapViewDelegate{
             
         }
     }
-    
-    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // Don't want to show a custom image if the annotation is the user's location.
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+
+        // Better to make this class property
+        let annotationIdentifier = "AnnotationIdentifier"
+
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView = av
+        }
+
+        if let annotationView = annotationView {
+            // Configure your annotation view here
+            annotationView.canShowCallout = true
+            
+            //let annotationImage = UIImage(systemName: "house.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+            
+            let circle = UIImage(systemName:"house.fill")!.withTintColor(.black)
+            //let circle = UIImage(named: "test")!
+            let size = CGSize(width: 25, height: 25)
+            let image = UIGraphicsImageRenderer(size:size).image {
+                _ in circle.draw(in:CGRect(origin:.zero, size:size))
+            }
+            
+            annotationView.image = image
+        }
+
+        return annotationView
+    }
     
     
     

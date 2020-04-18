@@ -1191,9 +1191,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiP-tz-bz1">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiP-tz-bz1">
                                                     <rect key="frame" x="0.0" y="0.0" width="131" height="105"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
@@ -1245,6 +1246,7 @@
                         <outlet property="unitField" destination="5oR-Fs-d7o" id="tKE-no-m9A"/>
                         <outlet property="utilitiesBoxImage" destination="zS7-KT-8qU" id="6gj-11-YVH"/>
                         <outlet property="washerDryerBoxImage" destination="DHv-2y-tWt" id="0Vg-9q-bY4"/>
+                        <segue destination="fTd-Jp-XVz" kind="show" identifier="ShowPhotos" id="Cca-YG-vT7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dml-89-z87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1305,6 +1307,34 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3824.6376811594205" y="45.535714285714285"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="1RM-Vp-rid">
+            <objects>
+                <viewController id="fTd-Jp-XVz" customClass="TestViewController" customModule="Eagle_Sublease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9KS-Ej-6tn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQ4-c7-laF">
+                                <rect key="frame" x="141" y="125" width="133" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="w79-Ao-B70"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8wq-fB-C3j"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="wQ4-c7-laF" id="4RE-p2-DDT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sq9-jp-FBA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4940.579710144928" y="559.82142857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KYM-ah-LOq">
