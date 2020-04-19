@@ -33,6 +33,8 @@ class DetailViewController: UIViewController {
     var listing: Listing!
     var listings: Listings!
     var photos: Photos!
+    var photoListing: Listing!
+    var photo = Photo()
     var imagePicker = UIImagePickerController()
     
     
@@ -271,26 +273,31 @@ class DetailViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         updateFromUserInterface()
+        print("The listing being saved is \(listing.address)")
         listing.saveData { success in
             if success {
                 self.leaveViewController()
+                
             } else {
                 print("*** ERROR: Couldn't leave this view controller because data wasn't saved.")
             }
         }
+        
+
+        
+        for picture in photos.photoArray {
+            photo = picture
+            photo.saveData(listing: listing) { (success) in
+                if success {
+                    print("Success saving photo")
+            }
+
+        }
+        }
     }
     
+        
     
-    
-    
-
-    
-    
-
-    
-    
-
- 
 }
 
 extension DetailViewController: GMSAutocompleteViewControllerDelegate {
@@ -369,14 +376,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return print("Tapped")
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowPhotos"{
-            print("segue fired")
-            let destination = segue.destination as! TestViewController
-            destination.student = "Yes"
-        }
-    }
+
 }
     
 
@@ -417,6 +417,7 @@ extension DetailViewController: UINavigationControllerDelegate, UIImagePickerCon
         
     }
 }
+
     
     
     

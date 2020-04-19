@@ -11,23 +11,28 @@ import UIKit
 class TestViewController: UIViewController {
     
     //This is a test view controller- delete for final version
-
-    @IBOutlet weak var nameLabel: UILabel!
     
-    var student: String!
+    
+    
+    var listing: Listing!
+    var photos = Photos()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if student == nil{
-            student = ""
+        photos.loadData(listing: listing) {
+
+            print("The array of pictures to enlarge is \(self.photos.photoArray)")
         }
         
-        nameLabel.text = student
         
+        print("The listing for the enlarged controller is \(listing.address)")
+        
+    
     }
     
-
-    
-
 }
+
+
+

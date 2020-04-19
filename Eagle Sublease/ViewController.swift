@@ -25,10 +25,11 @@ class ViewController: UIViewController {
     var height: Double = 3
     
     var indexClass = IndexClass()
+//    var post = Listing()
     var mapIndex = 0
+    var post: Listing!
     
     var pointAnnotation: CustomAnnotations!
-    var pinAnnotationView: MKPinAnnotationView!
     
     
     
@@ -99,14 +100,12 @@ class ViewController: UIViewController {
             let annotation = Listing(address: listings.listingArray[index].address, coordinate: listings.listingArray[index].coordinate, unitNumber: listings.listingArray[index].unitNumber, descriptionForListing: listings.listingArray[index].descriptionForListing, postingDate: listings.listingArray[index].postingDate, index: listings.listingArray[index].index, price: listings.listingArray[index].price, utilitiesBoxBool: listings.listingArray[index].utilitiesBoxBool, washerDryerBoxBool: listings.listingArray[index].washerDryerBoxBool, dishwasherBoxBool: listings.listingArray[index].dishwasherBoxBool, singleRoomBoxBool: listings.listingArray[index].singleRoomBoxBool, doubleRoomBoxBool: listings.listingArray[index].doubleRoomBoxBool, parkingSpotBoxBool: listings.listingArray[index].parkingSpotBoxBool, airConditioningBoxBool: listings.listingArray[index].airConditioningBoxBool, petsBoxBool: listings.listingArray[index].petsBoxBool, deckBoxBool: listings.listingArray[index].deckBoxBool, handicapBoxBool: listings.listingArray[index].handicapBoxBool, postingUserID: listings.listingArray[index].postingUserID, documentID: listings.listingArray[index].documentID)
             
             
-            
             var information = MKPointAnnotation()
-            
+
             information.coordinate = annotation.coordinate
             
             
             mapView.addAnnotation(information)
-            
         }
         
         if listings.listingArray.count > 0{
@@ -342,7 +341,7 @@ extension ViewController: MKMapViewDelegate{
     
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        var post = Listing()
+        
         print("The annotation was selected")
         print("The coordinate is \(view.annotation!.coordinate)")
         
@@ -353,51 +352,53 @@ extension ViewController: MKMapViewDelegate{
             }
         }
         
+        
 //
-//        guard let postAnnotation = view.annotation as? Listing else {
+//        guard let postAnnotation = view.annotation as? CustomAnnotations else {
 //            return
 //        }
-//        let post = listings.listingArray[postAnnotation.index]
+//        post = listings.listingArray[postAnnotation.index]
         print("The index number is \(post.index)")
         self.mapIndex = post.index
-        indexClass.index = post.index
-        indexClass.address = post.address
-        indexClass.descriptionForListing = post.descriptionForListing
-        indexClass.unit = post.unitNumber
-        indexClass.price = post.price
-        indexClass.postingDate = post.postingDate
-        indexClass.utilitiesBoxBool = post.utilitiesBoxBool
-        indexClass.washerDryerBoxBool = post.washerDryerBoxBool
-        indexClass.dishwasherBoxBool = post.dishwasherBoxBool
-        indexClass.singleRoomBoxBool = post.singleRoomBoxBool
-        indexClass.doubleRoomBoxBool = post.doubleRoomBoxBool
-        indexClass.parkingSpotBoxBool = post.parkingSpotBoxBool
-        indexClass.airConditioningBoxBool = post.airConditioningBoxBool
-        indexClass.petsBoxBool = post.petsBoxBool
-        indexClass.deckBoxBool = post.deckBoxBool
-        indexClass.handicapBoxBool = post.handicapBoxBool
+//        indexClass.index = post.index
+//        indexClass.address = post.address
+//        indexClass.descriptionForListing = post.descriptionForListing
+//        indexClass.unit = post.unitNumber
+//        indexClass.price = post.price
+//        indexClass.postingDate = post.postingDate
+//        indexClass.utilitiesBoxBool = post.utilitiesBoxBool
+//        indexClass.washerDryerBoxBool = post.washerDryerBoxBool
+//        indexClass.dishwasherBoxBool = post.dishwasherBoxBool
+//        indexClass.singleRoomBoxBool = post.singleRoomBoxBool
+//        indexClass.doubleRoomBoxBool = post.doubleRoomBoxBool
+//        indexClass.parkingSpotBoxBool = post.parkingSpotBoxBool
+//        indexClass.airConditioningBoxBool = post.airConditioningBoxBool
+//        indexClass.petsBoxBool = post.petsBoxBool
+//        indexClass.deckBoxBool = post.deckBoxBool
+//        indexClass.handicapBoxBool = post.handicapBoxBool
         performSegue(withIdentifier: "ShowDetail", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetail"{
             let destination = segue.destination as! ListingDetailViewController
-            destination.event = indexClass.index
-            destination.address = indexClass.address
-            destination.unit = indexClass.unit
-            destination.descriptionForListing = indexClass.descriptionForListing
-            destination.price = indexClass.price
-            destination.postingDate = indexClass.postingDate
-            destination.utilitiesBoxBool = indexClass.utilitiesBoxBool
-            destination.washerDryerBoxBool = indexClass.washerDryerBoxBool
-            destination.dishwasherBoxBool = indexClass.dishwasherBoxBool
-            destination.singleRoomBoxBool = indexClass.singleRoomBoxBool
-            destination.doubleRoomBoxBool = indexClass.doubleRoomBoxBool
-            destination.parkingSpotBoxBool = indexClass.parkingSpotBoxBool
-            destination.airConditioningBoxBool = indexClass.airConditioningBoxBool
-            destination.petsBoxBool = indexClass.petsBoxBool
-            destination.deckBoxBool = indexClass.deckBoxBool
-            destination.handicapBoxBool = indexClass.handicapBoxBool
+            destination.listing = post
+//            destination.event = indexClass.index
+//            destination.address = indexClass.address
+//            destination.unit = indexClass.unit
+//            destination.descriptionForListing = indexClass.descriptionForListing
+//            destination.price = indexClass.price
+//            destination.postingDate = indexClass.postingDate
+//            destination.utilitiesBoxBool = indexClass.utilitiesBoxBool
+//            destination.washerDryerBoxBool = indexClass.washerDryerBoxBool
+//            destination.dishwasherBoxBool = indexClass.dishwasherBoxBool
+//            destination.singleRoomBoxBool = indexClass.singleRoomBoxBool
+//            destination.doubleRoomBoxBool = indexClass.doubleRoomBoxBool
+//            destination.parkingSpotBoxBool = indexClass.parkingSpotBoxBool
+//            destination.airConditioningBoxBool = indexClass.airConditioningBoxBool
+//            destination.petsBoxBool = indexClass.petsBoxBool
+//            destination.deckBoxBool = indexClass.deckBoxBool
+//            destination.handicapBoxBool = indexClass.handicapBoxBool
             
             
         }
@@ -428,7 +429,7 @@ extension ViewController: MKMapViewDelegate{
             
             //let annotationImage = UIImage(systemName: "house.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal)
             
-            let circle = UIImage(systemName:"house.fill")!.withTintColor(.black)
+            let circle = UIImage(systemName:"house.fill")!.withTintColor(.darkGray)
             //let circle = UIImage(named: "test")!
             let size = CGSize(width: 25, height: 25)
             let image = UIGraphicsImageRenderer(size:size).image {

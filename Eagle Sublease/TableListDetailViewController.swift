@@ -31,6 +31,12 @@ class TableListDetailViewController: UIViewController {
     
     @IBOutlet weak var postingDateLabel: UILabel!
     
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    var photos = Photos()
+    
+    var enlargedPictures: [Photo] = []
+    
+    
     let dateFormatter = DateFormatter()
     
     
@@ -38,16 +44,35 @@ class TableListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        enlargedPictures.removeAll()
         
+        imageCollectionView.delegate = self
+        imageCollectionView.dataSource = self
+
         if listing == nil{
             listing = Listing()
         }
+        print("The listing being loaded is \(listing!)")
+        
+        
         
         updateUserInterface()
+        
+        photos.loadData(listing: listing) {
+            print("The photo array is \(self.photos.photoArray)")
+            self.imageCollectionView.reloadData()
+        }
+        
+        for pictures in photos.photoArray{
+            enlargedPictures.append(pictures)
+        }
+        
+        
         
         
         
     }
+    
     
     func updateUserInterface(){
         dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -103,4 +128,35 @@ class TableListDetailViewController: UIViewController {
         
     }
     
+}
+
+extension TableListDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photoArray.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! TableListCollectionViewCell
+        "The index path row is \(indexPath.row)"
+        cell.imageView.image = photos.photoArray[indexPath.row].image
+        return cell
+
+    }
+
+    //Use the following two functions to execute segue to separate view controller to view photos at larger size in vertical collection view
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "EnlargePhotos", sender: Any?.self)
+        return print("Tapped")
+
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EnlargePhotos"{
+            print("segue fired")
+            let destination = segue.destination as! TestViewController
+            destination.listing = listing
+        }
+    }
 }

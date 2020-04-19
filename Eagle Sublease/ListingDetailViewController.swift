@@ -19,22 +19,22 @@ class ListingDetailViewController: UIViewController {
     @IBOutlet weak var priceView: UITextView!
     @IBOutlet weak var postingDateLabel: UILabel!
     
-    var event = Int()
-    var address = String()
-    var unit = String()
-    var descriptionForListing = String()
-    var price = Double()
-    var postingDate = Date()
-    var utilitiesBoxBool = Bool()
-    var washerDryerBoxBool = Bool()
-    var dishwasherBoxBool = Bool()
-    var singleRoomBoxBool = Bool()
-    var doubleRoomBoxBool = Bool()
-    var parkingSpotBoxBool = Bool()
-    var airConditioningBoxBool = Bool()
-    var petsBoxBool = Bool()
-    var deckBoxBool = Bool()
-    var handicapBoxBool = Bool()
+//    var event = Int()
+//    var address = String()
+//    var unit = String()
+//    var descriptionForListing = String()
+//    var price = Double()
+//    var postingDate = Date()
+//    var utilitiesBoxBool = Bool()
+//    var washerDryerBoxBool = Bool()
+//    var dishwasherBoxBool = Bool()
+//    var singleRoomBoxBool = Bool()
+//    var doubleRoomBoxBool = Bool()
+//    var parkingSpotBoxBool = Bool()
+//    var airConditioningBoxBool = Bool()
+//    var petsBoxBool = Bool()
+//    var deckBoxBool = Bool()
+//    var handicapBoxBool = Bool()
     
     
     @IBOutlet weak var utilitiesBoxImage: UIImageView!
@@ -51,61 +51,80 @@ class ListingDetailViewController: UIViewController {
      let dateFormatter = DateFormatter()
     
     
-    var listings: Listings!
+    var listing: Listing!
+    var photos = Photos()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if listing == nil{
+            listing = Listing()
+        }
+        
+        print("The listing sent over was \(listing.address)")
         updateUserInterface()
+        
+        print("The listing is \(listing)")
+        print("The listing document ID is \(listing.documentID)")
+        
+        photos.loadData(listing: listing) {
+            print("The photo array is \(self.photos.photoArray)")
+        }
+        
+        
+     
+        
+        
     }
     
     func updateUserInterface(){
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
-        let usableDate = postingDate
+        let usableDate = listing.postingDate
         
         var dateString = dateFormatter.string(from: usableDate)
         dateString = dateFormatter.string(from: usableDate)
         postingDateLabel.text = "Date Posted: \(dateString)"
         
         
-        addressView.text = address
-        unitNumberView.text = unit
-        descriptionForListingView.text = descriptionForListing
-        if price.remainder(dividingBy: 1) == 0{
-            priceView.text = "\(price)0"
+        addressView.text = listing.address
+        unitNumberView.text = listing.unitNumber
+        descriptionForListingView.text = listing.descriptionForListing
+        if listing.price.remainder(dividingBy: 1) == 0{
+            priceView.text = "\(listing.price)0"
         }
         else{
-            priceView.text = "\(price)"
+            priceView.text = "\(listing.price)"
         }
-        if utilitiesBoxBool == true{
+        if listing.utilitiesBoxBool == true{
             self.utilitiesBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
-        if washerDryerBoxBool == true{
+        if listing.washerDryerBoxBool == true{
             self.washerDryerBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
-        if dishwasherBoxBool == true{
+        if listing.dishwasherBoxBool == true{
                    self.dishwasherBoxImage.image = UIImage(systemName: "checkmark.rectangle")
                }
-        if singleRoomBoxBool == true{
+        if listing.singleRoomBoxBool == true{
             self.singleRoomBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
-        if doubleRoomBoxBool == true{
+        if listing.doubleRoomBoxBool == true{
             self.doubleRoomBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
-        if parkingSpotBoxBool == true{
+        if listing.parkingSpotBoxBool == true{
             self.parkingSpaceBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
-        if airConditioningBoxBool == true{
+        if listing.airConditioningBoxBool == true{
             self.airConditioningBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
-        if petsBoxBool == true{
+        if listing.petsBoxBool == true{
             self.petsBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
-        if deckBoxBool == true{
+        if listing.deckBoxBool == true{
                   self.deckBoxImage.image = UIImage(systemName: "checkmark.rectangle")
               }
-        if handicapBoxBool == true{
+        if listing.handicapBoxBool == true{
             self.handicapBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
         
