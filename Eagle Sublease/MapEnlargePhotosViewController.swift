@@ -1,56 +1,50 @@
 //
-//  TestViewController.swift
+//  MapEnlargePhotosViewController.swift
 //  Eagle Sublease
 //
-//  Created by Kyle Gangi on 4/17/20.
+//  Created by Kyle Gangi on 4/19/20.
 //  Copyright © 2020 Kyle Gangi. All rights reserved.
 //
 
 import UIKit
 
-class TestViewController: UIViewController {
-    
-    //This is a test view controller- delete for final version
-    
-    
-    
-    
-    
+class MapEnlargePhotosViewController: UIViewController {
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    
     var listing: Listing!
     var photos = Photos()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         photos.loadData(listing: listing) {
 
-            print("The array of pictures to enlarge is \(self.photos.photoArray)")
-            self.imageCollectionView.reloadData()
-        }
-        
-        
+        print("The array of pictures to enlarge is \(self.photos.photoArray)")
+        self.imageCollectionView.reloadData()
+
+    }
         print("The listing for the enlarged controller is \(listing.address)")
-        
-    
+               
     }
     
+
+
+
 }
 
-extension TestViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+extension MapEnlargePhotosViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         photos.photoArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "EnlargedTableCollectionViewCell", for: indexPath) as! EnlargedTableCollectionViewCell
+        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "MapEnlargePhotosCollectionViewCell", for: indexPath) as! MapEnlargePhotosCollectionViewCell
         cell.imageView.image = photos.photoArray[indexPath.row].image
         return cell
     }
 }
 
-extension TestViewController: UICollectionViewDelegateFlowLayout{
+extension MapEnlargePhotosViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = UIScreen.main.bounds
         return CGSize(width: size.width, height: size.height)
@@ -68,6 +62,3 @@ extension TestViewController: UICollectionViewDelegateFlowLayout{
         return 0
     }
 }
-
-
-

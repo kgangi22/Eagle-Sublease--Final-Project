@@ -31,7 +31,9 @@ class TableListDetailViewController: UIViewController {
     
     @IBOutlet weak var postingDateLabel: UILabel!
     
+    
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    
     var photos = Photos()
     
     var enlargedPictures: [Photo] = []
@@ -46,8 +48,7 @@ class TableListDetailViewController: UIViewController {
         super.viewDidLoad()
         enlargedPictures.removeAll()
         
-        imageCollectionView.delegate = self
-        imageCollectionView.dataSource = self
+        
 
         if listing == nil{
             listing = Listing()
@@ -61,6 +62,7 @@ class TableListDetailViewController: UIViewController {
         photos.loadData(listing: listing) {
             print("The photo array is \(self.photos.photoArray)")
             self.imageCollectionView.reloadData()
+            
         }
         
         for pictures in photos.photoArray{
@@ -135,14 +137,13 @@ extension TableListDetailViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.photoArray.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! TableListCollectionViewCell
-        "The index path row is \(indexPath.row)"
+        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "TableViewListingCollectionViewCell", for: indexPath) as! TableViewListingCollectionViewCell
         cell.imageView.image = photos.photoArray[indexPath.row].image
         return cell
-
     }
+    
 
     //Use the following two functions to execute segue to separate view controller to view photos at larger size in vertical collection view
 

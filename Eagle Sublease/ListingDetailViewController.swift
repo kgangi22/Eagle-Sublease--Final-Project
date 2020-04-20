@@ -50,6 +50,9 @@ class ListingDetailViewController: UIViewController {
     
      let dateFormatter = DateFormatter()
     
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    
+    
     
     var listing: Listing!
     var photos = Photos()
@@ -68,10 +71,11 @@ class ListingDetailViewController: UIViewController {
         print("The listing is \(listing)")
         print("The listing document ID is \(listing.documentID)")
         
-        photos.loadData(listing: listing) {
+       photos.loadData(listing: listing) {
             print("The photo array is \(self.photos.photoArray)")
+            self.imageCollectionView.reloadData()
+            
         }
-        
         
      
         
@@ -132,6 +136,35 @@ class ListingDetailViewController: UIViewController {
     }
     
     
+
+}
+
+extension ListingDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photoArray.count
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "MapListingDetailCollectionViewCell", for: indexPath) as! MapListingDetailCollectionViewCell
+        cell.imageView.image = photos.photoArray[indexPath.row].image
+        return cell
+    }
+    
+
+    //Use the following two functions to execute segue to separate view controller to view photos at larger size in vertical collection view
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "MapEnlargePhoto", sender: Any?.self)
+        return print("Tapped")
+
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MapEnlargePhoto"{
+            print("segue fired")
+            let destination = segue.destination as! MapEnlargePhotosViewController
+            destination.listing = listing
+        }
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  TableListCollectionViewCell.swift
+//  EnlargedTableCollectionViewCell.swift
 //  Eagle Sublease
 //
 //  Created by Kyle Gangi on 4/19/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableListCollectionViewCell: UICollectionViewCell {
+class EnlargedTableCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
