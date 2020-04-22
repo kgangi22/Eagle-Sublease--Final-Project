@@ -31,6 +31,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Eagle Sublease will need acces to your camera to post photos.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Eagle Sublease needs access to the device location in order to show this on a map.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Eagle Sublease needs access to the device location in order to show this on a map.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Eagle Sublease will need acces to your photo library to post photos.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -61,8 +69,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -71,13 +78,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Eagle Sublease needs access to the device location in order to show this on a map.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Eagle Sublease needs access to the device location in order to show this on a map.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Eagle Sublease will need acces to your camera to post photos.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Eagle Sublease will need acces to your photo library to post photos.</string>
 </dict>
 </plist>

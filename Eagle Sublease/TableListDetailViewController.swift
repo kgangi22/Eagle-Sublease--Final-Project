@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import MessageUI
 
-class TableListDetailViewController: UIViewController {
+class TableListDetailViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     
     var listing: Listing!
@@ -34,6 +36,9 @@ class TableListDetailViewController: UIViewController {
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
+    
+    @IBOutlet weak var contactOrDeleteButton: UIBarButtonItem!
+    
     var photos = Photos()
     
     var enlargedPictures: [Photo] = []
@@ -47,6 +52,9 @@ class TableListDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         enlargedPictures.removeAll()
+        
+        descriptionForListingView.layer.borderWidth = 1
+        descriptionForListingView.layer.borderColor = UIColor.black.cgColor
         
         
 
@@ -67,6 +75,19 @@ class TableListDetailViewController: UIViewController {
         
         for pictures in photos.photoArray{
             enlargedPictures.append(pictures)
+        }
+        
+        let currentUserID = Auth.auth().currentUser?.uid ?? "unknown user"
+        
+        print("The current posting user id is \(currentUserID)")
+        
+        if currentUserID == listing.postingUserID {
+            contactOrDeleteButton.title = "Delete"
+            contactOrDeleteButton.tintColor = .red
+        }
+        else{
+            contactOrDeleteButton.title = "Contact"
+            
         }
         
         
@@ -129,6 +150,55 @@ class TableListDetailViewController: UIViewController {
         }
         
     }
+    
+    func leaveViewController(){
+        let isPresentingInAddMode = presentingViewController is UINavigationController
+        if isPresentingInAddMode {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @IBAction func contactOrDeleteButtonPressed(_ sender: UIBarButtonItem) {
+        
+        
+        if contactOrDeleteButton.title == "Contact"{
+            
+            if MFMailComposeViewController.canSendMail() {
+                let mailComposeViewController = MFMailComposeViewController()
+                
+                mailComposeViewController.setToRecipients(["\(listing.postedBy)"])
+                mailComposeViewController.setSubject("\(listing.address)")
+                
+                mailComposeViewController.mailComposeDelegate = self
+                
+                present(mailComposeViewController, animated: true, completion: nil)
+                
+            }
+            else{
+                print("Mail services are not available")
+                oneButtonAlert(title: "Message Service Not Enabled", message: "Message services may not be enabled on this device. You must have a mailbox set up in your mail application.")
+                print("Tried to send email to \(listing.postedBy)")
+            }
+            
+        }
+        else{
+            listing.deleteData(listing: listing) { (success) in
+                if success {
+                    self.leaveViewController()
+                } else {
+                  print("*** Error: delete unsuccessful")
+                }
+            }
+        }
+    
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     
 }
 

@@ -8,33 +8,55 @@
 
 import UIKit
 import MapKit
+import Firebase
+import FirebaseUI
+import GoogleSignIn
+import MessageUI
 
 
-class ListingDetailViewController: UIViewController {
+
+
+class ListingDetailViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch result {
+        case .cancelled:
+            print("Mail cancelled")
+        case .sent:
+            print("Mail sent")
+        case .failed:
+            print("Mail sent failure:")
+        default:
+            break
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+
     @IBOutlet weak var addressView: UITextView!
     @IBOutlet weak var unitNumberView: UITextView!
     @IBOutlet weak var descriptionForListingView: UITextView!
     @IBOutlet weak var priceView: UITextView!
     @IBOutlet weak var postingDateLabel: UILabel!
     
-//    var event = Int()
-//    var address = String()
-//    var unit = String()
-//    var descriptionForListing = String()
-//    var price = Double()
-//    var postingDate = Date()
-//    var utilitiesBoxBool = Bool()
-//    var washerDryerBoxBool = Bool()
-//    var dishwasherBoxBool = Bool()
-//    var singleRoomBoxBool = Bool()
-//    var doubleRoomBoxBool = Bool()
-//    var parkingSpotBoxBool = Bool()
-//    var airConditioningBoxBool = Bool()
-//    var petsBoxBool = Bool()
-//    var deckBoxBool = Bool()
-//    var handicapBoxBool = Bool()
+    //    var event = Int()
+    //    var address = String()
+    //    var unit = String()
+    //    var descriptionForListing = String()
+    //    var price = Double()
+    //    var postingDate = Date()
+    //    var utilitiesBoxBool = Bool()
+    //    var washerDryerBoxBool = Bool()
+    //    var dishwasherBoxBool = Bool()
+    //    var singleRoomBoxBool = Bool()
+    //    var doubleRoomBoxBool = Bool()
+    //    var parkingSpotBoxBool = Bool()
+    //    var airConditioningBoxBool = Bool()
+    //    var petsBoxBool = Bool()
+    //    var deckBoxBool = Bool()
+    //    var handicapBoxBool = Bool()
     
     
     @IBOutlet weak var utilitiesBoxImage: UIImageView!
@@ -48,9 +70,13 @@ class ListingDetailViewController: UIViewController {
     @IBOutlet weak var deckBoxImage: UIImageView!
     @IBOutlet weak var handicapBoxImage: UIImageView!
     
-     let dateFormatter = DateFormatter()
+    let dateFormatter = DateFormatter()
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    
+    @IBOutlet weak var contactOrDeleteButton: UIBarButtonItem!
+    
+    
     
     
     
@@ -60,6 +86,9 @@ class ListingDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        descriptionForListingView.layer.borderWidth = 1
+        descriptionForListingView.layer.borderColor = UIColor.black.cgColor
         
         if listing == nil{
             listing = Listing()
@@ -71,13 +100,30 @@ class ListingDetailViewController: UIViewController {
         print("The listing is \(listing)")
         print("The listing document ID is \(listing.documentID)")
         
-       photos.loadData(listing: listing) {
+        photos.loadData(listing: listing) {
             print("The photo array is \(self.photos.photoArray)")
             self.imageCollectionView.reloadData()
             
         }
         
-     
+        let currentUserID = Auth.auth().currentUser?.uid ?? "unknown user"
+        
+        print("The current posting user id is \(currentUserID)")
+        
+        if currentUserID == listing.postingUserID {
+            contactOrDeleteButton.title = "Delete"
+            contactOrDeleteButton.tintColor = .red
+        }
+        else{
+            contactOrDeleteButton.title = "Contact"
+            
+        }
+        
+        
+        
+        
+        
+        
         
         
     }
@@ -108,8 +154,8 @@ class ListingDetailViewController: UIViewController {
             self.washerDryerBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
         if listing.dishwasherBoxBool == true{
-                   self.dishwasherBoxImage.image = UIImage(systemName: "checkmark.rectangle")
-               }
+            self.dishwasherBoxImage.image = UIImage(systemName: "checkmark.rectangle")
+        }
         if listing.singleRoomBoxBool == true{
             self.singleRoomBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
@@ -126,8 +172,8 @@ class ListingDetailViewController: UIViewController {
             self.petsBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
         if listing.deckBoxBool == true{
-                  self.deckBoxImage.image = UIImage(systemName: "checkmark.rectangle")
-              }
+            self.deckBoxImage.image = UIImage(systemName: "checkmark.rectangle")
+        }
         if listing.handicapBoxBool == true{
             self.handicapBoxImage.image = UIImage(systemName: "checkmark.rectangle")
         }
@@ -135,8 +181,63 @@ class ListingDetailViewController: UIViewController {
         
     }
     
+    func leaveViewController(){
+        let isPresentingInAddMode = presentingViewController is UINavigationController
+        if isPresentingInAddMode {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
     
 
+    
+
+    
+    
+    
+    @IBAction func contactOrDeleteButtonPressed(_ sender: UIBarButtonItem) {
+        
+        
+        if contactOrDeleteButton.title == "Contact"{
+            
+            if MFMailComposeViewController.canSendMail() {
+                let mailComposeViewController = MFMailComposeViewController()
+                
+                mailComposeViewController.setToRecipients(["\(listing.postedBy)"])
+                mailComposeViewController.setSubject("\(listing.address)")
+                
+                mailComposeViewController.mailComposeDelegate = self
+                
+                present(mailComposeViewController, animated: true, completion: nil)
+                
+            }
+            else{
+                print("Mail services are not available")
+                oneButtonAlert(title: "Message Service Not Enabled", message: "Message services may not be enabled on this device. You must have a mailbox set up in your mail application.")
+                print("Tried to send email to \(listing.postedBy)")
+            }
+            
+        }
+        else{
+            listing.deleteData(listing: listing) { (success) in
+                if success {
+                    self.leaveViewController()
+                } else {
+                  print("*** Error: delete unsuccessful")
+                }
+            }
+        }
+        
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
 }
 
 extension ListingDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -151,15 +252,15 @@ extension ListingDetailViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-
+    
     //Use the following two functions to execute segue to separate view controller to view photos at larger size in vertical collection view
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "MapEnlargePhoto", sender: Any?.self)
         return print("Tapped")
-
+        
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MapEnlargePhoto"{
             print("segue fired")
@@ -168,3 +269,4 @@ extension ListingDetailViewController: UICollectionViewDelegate, UICollectionVie
         }
     }
 }
+

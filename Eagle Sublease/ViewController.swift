@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         
         
         for index in 0..<listings.listingArray.count{
-            let annotation = Listing(address: listings.listingArray[index].address, coordinate: listings.listingArray[index].coordinate, unitNumber: listings.listingArray[index].unitNumber, descriptionForListing: listings.listingArray[index].descriptionForListing, postingDate: listings.listingArray[index].postingDate, index: listings.listingArray[index].index, price: listings.listingArray[index].price, utilitiesBoxBool: listings.listingArray[index].utilitiesBoxBool, washerDryerBoxBool: listings.listingArray[index].washerDryerBoxBool, dishwasherBoxBool: listings.listingArray[index].dishwasherBoxBool, singleRoomBoxBool: listings.listingArray[index].singleRoomBoxBool, doubleRoomBoxBool: listings.listingArray[index].doubleRoomBoxBool, parkingSpotBoxBool: listings.listingArray[index].parkingSpotBoxBool, airConditioningBoxBool: listings.listingArray[index].airConditioningBoxBool, petsBoxBool: listings.listingArray[index].petsBoxBool, deckBoxBool: listings.listingArray[index].deckBoxBool, handicapBoxBool: listings.listingArray[index].handicapBoxBool, postingUserID: listings.listingArray[index].postingUserID, documentID: listings.listingArray[index].documentID)
+            let annotation = Listing(address: listings.listingArray[index].address, coordinate: listings.listingArray[index].coordinate, unitNumber: listings.listingArray[index].unitNumber, descriptionForListing: listings.listingArray[index].descriptionForListing, postingDate: listings.listingArray[index].postingDate, index: listings.listingArray[index].index, price: listings.listingArray[index].price, utilitiesBoxBool: listings.listingArray[index].utilitiesBoxBool, washerDryerBoxBool: listings.listingArray[index].washerDryerBoxBool, dishwasherBoxBool: listings.listingArray[index].dishwasherBoxBool, singleRoomBoxBool: listings.listingArray[index].singleRoomBoxBool, doubleRoomBoxBool: listings.listingArray[index].doubleRoomBoxBool, parkingSpotBoxBool: listings.listingArray[index].parkingSpotBoxBool, airConditioningBoxBool: listings.listingArray[index].airConditioningBoxBool, petsBoxBool: listings.listingArray[index].petsBoxBool, deckBoxBool: listings.listingArray[index].deckBoxBool, handicapBoxBool: listings.listingArray[index].handicapBoxBool, postingUserID: listings.listingArray[index].postingUserID,postedBy:listings.listingArray[index].postedBy, documentID: listings.listingArray[index].documentID)
             
             
             var information = MKPointAnnotation()
@@ -250,22 +250,23 @@ extension ViewController: FUIAuthDelegate {
             // Assumes data will be isplayed in a tableView that was hidden until login was verified so unauthorized users can't see data.
             mapView.isHidden = false
             print("^^^ We signed in with the user \(user.email ?? "unknown e-mail")")
+            
         }
     }
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
          //Create an instance of the FirebaseAuth login view controller
+        
         let loginViewController = FUIAuthPickerViewController(authUI: authUI)
         let marginInsets: CGFloat = 16 // logo will be 16 points from L and R margins
-        let imageHeight: CGFloat = 225 // the height of our logo
+        let imageHeight: CGFloat = 280 // the height of our logo
         let imageY = self.view.center.y - imageHeight // places bottom of UIImageView in the center of the login screen
         let logoFrame = CGRect(x: self.view.frame.origin.x + marginInsets, y: imageY, width: self.view.frame.width - (marginInsets*2), height: imageHeight)
         let logoImageView = UIImageView(frame: logoFrame)
-        logoImageView.image = UIImage(named: "logo")
+        logoImageView.image = UIImage(named: "SignInLogo")
         logoImageView.contentMode = .scaleAspectFit // Set imageView to Aspect Fit
+
         loginViewController.view.addSubview(logoImageView) // Add ImageView to the login controller's main view
 
-        let selectorView = view.subviews[0].subviews[0]
-        selectorView.backgroundColor = UIColor.clear
 
         // Set background color to white
         loginViewController.view.backgroundColor = UIColor(red: 126/255, green: 30/255, blue: 21/255, alpha: 1.0)
@@ -277,6 +278,9 @@ extension ViewController: FUIAuthDelegate {
 
         // Create the UIImageView using the frame created above & add the "logo" image
 
+        
+        
+        
 
         return loginViewController
         
