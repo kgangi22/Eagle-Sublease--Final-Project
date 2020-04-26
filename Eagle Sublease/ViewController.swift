@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     var post: Listing!
     
     var pointAnnotation: CustomAnnotations!
+    let bostonCollegeLocation = CLLocation(latitude: 42.335509, longitude: -71.168387)
     
     
     
@@ -108,9 +109,21 @@ class ViewController: UIViewController {
             mapView.addAnnotation(information)
         }
         
-        if listings.listingArray.count > 0{
+        print("The map index is :\(mapIndex)")
+        print("The length of the list is: \(listings.listingArray.count)")
+        
+        if listings.listingArray.count == 0{
+            mapView.setCenter(bostonCollegeLocation.coordinate, animated: true)
+        }
+        
+        else if mapIndex >= listings.listingArray.count{
+            mapView.setCenter(listings.listingArray[listings.listingArray.count - 1].coordinate, animated: true)
+        }
+        else if listings.listingArray.count > 0{
            mapView.setCenter(listings.listingArray[mapIndex].coordinate, animated: true)
         }
+        
+        
         
         
         
@@ -227,10 +240,6 @@ class ViewController: UIViewController {
             mapView.isHidden = false
         }
     }
-    
-    
-    
-    
     
 }
 

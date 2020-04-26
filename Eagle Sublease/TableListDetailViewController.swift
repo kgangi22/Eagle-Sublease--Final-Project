@@ -151,6 +151,24 @@ class TableListDetailViewController: UIViewController, MFMailComposeViewControll
         
     }
     
+    func deleteAlert(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            self.listing.deleteData(listing: self.listing) { (success) in
+            if success {
+                self.leaveViewController()
+            } else {
+              print("*** Error: delete unsuccessful")
+            }
+        }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
     func leaveViewController(){
         let isPresentingInAddMode = presentingViewController is UINavigationController
         if isPresentingInAddMode {
@@ -184,13 +202,7 @@ class TableListDetailViewController: UIViewController, MFMailComposeViewControll
             
         }
         else{
-            listing.deleteData(listing: listing) { (success) in
-                if success {
-                    self.leaveViewController()
-                } else {
-                  print("*** Error: delete unsuccessful")
-                }
-            }
+              deleteAlert(title: "Are You Sure You Want To Delete", message: "This action cannot be undone.")
         }
     
     }
